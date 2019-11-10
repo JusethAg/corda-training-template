@@ -1,6 +1,7 @@
 package net.corda.training.state
 
 import net.corda.core.contracts.BelongsToContract
+import net.corda.core.contracts.Amount
 import net.corda.core.contracts.ContractState
 import net.corda.core.identity.Party
 import net.corda.training.contract.IOUContract
@@ -12,6 +13,6 @@ import net.corda.training.contract.IOUContract
  * Remove the "val data: String = "data" property before starting the [IOUState] tasks.
  */
 @BelongsToContract(IOUContract::class)
-data class IOUState(val data: String = "data"): ContractState {
+data class IOUState(val amount: Amount<java.util.Currency>): ContractState {
     override val participants: List<Party> get() = listOf()
 }
