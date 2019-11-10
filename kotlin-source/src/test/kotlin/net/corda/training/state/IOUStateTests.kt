@@ -91,21 +91,21 @@ class IOUStateTests {
      * TODO: Include the lender within the [IOUState.participants] list
      * Hint: [listOf] takes any number of parameters and will add them to the list
      */
-//    @Test
-//    fun lenderIsParticipant() {
-//        val iouState = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        assertNotEquals(iouState.participants.indexOf(ALICE.party), -1)
-//    }
+    @Test
+    fun lenderIsParticipant() {
+        val iouState = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        assertNotEquals(iouState.participants.indexOf(ALICE.party), -1)
+    }
 
     /**
      * Task 6.
      * TODO: Similar to the last task, include the borrower within the [IOUState.participants] list
      */
-//    @Test
-//    fun borrowerIsParticipant() {
-//        val iouState = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        assertNotEquals(iouState.participants.indexOf(BOB.party), -1)
-//    }
+    @Test
+    fun borrowerIsParticipant() {
+        val iouState = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        assertNotEquals(iouState.participants.indexOf(BOB.party), -1)
+    }
 
     /**
      * Task 7.
