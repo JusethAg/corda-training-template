@@ -1,7 +1,9 @@
 package net.corda.training.contract
 
 import net.corda.core.contracts.*
+import net.corda.finance.DOLLARS
 import net.corda.finance.POUNDS
+import net.corda.finance.SWISS_FRANCS
 import net.corda.testing.contracts.DummyState
 import net.corda.testing.node.MockServices
 import net.corda.testing.node.ledger
@@ -145,31 +147,31 @@ class IOUIssueTests {
      * - When checking the [IOUState.amount] property is greater than zero, you need to check the
      *   [IOUState.amount.quantity] field.
      */
-//    @Test
-//    fun cannotCreateZeroValueIOUs() {
-//        ledgerServices.ledger {
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(0.POUNDS, ALICE.party, BOB.party)) // Zero amount fails.
-//                this `fails with` "A newly issued IOU must have a positive amount."
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(100.SWISS_FRANCS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(1.POUNDS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(10.DOLLARS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun cannotCreateZeroValueIOUs() {
+        ledgerServices.ledger {
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(0.POUNDS, ALICE.party, BOB.party)) // Zero amount fails.
+                this `fails with` "A newly issued IOU must have a positive amount."
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(100.SWISS_FRANCS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(1.POUNDS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(10.DOLLARS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+        }
+    }
 
     /**
      * Task 5.
@@ -179,23 +181,23 @@ class IOUIssueTests {
      * - You can use the [IOUState.lender] and [IOUState.borrower] properties.
      * - This check must be made before the checking who has signed.
      */
-//    @Test
-//    fun lenderAndBorrowerCannotBeTheSame() {
-//        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        val borrowerIsLenderIou = IOUState(10.POUNDS, ALICE.party, ALICE.party)
-//        ledgerServices.ledger {
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey),IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, borrowerIsLenderIou)
-//                this `fails with` "The lender and borrower cannot have the same identity."
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun lenderAndBorrowerCannotBeTheSame() {
+        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        val borrowerIsLenderIou = IOUState(10.POUNDS, ALICE.party, ALICE.party)
+        ledgerServices.ledger {
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey),IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, borrowerIsLenderIou)
+                this `fails with` "The lender and borrower cannot have the same identity."
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this.verifies()
+            }
+        }
+    }
 
     /**
      * Task 6.
