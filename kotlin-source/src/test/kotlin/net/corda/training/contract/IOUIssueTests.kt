@@ -2,6 +2,7 @@ package net.corda.training.contract
 
 import net.corda.core.contracts.*
 import net.corda.finance.POUNDS
+import net.corda.testing.contracts.DummyState
 import net.corda.testing.node.MockServices
 import net.corda.testing.node.ledger
 import net.corda.training.ALICE
@@ -82,23 +83,23 @@ class IOUIssueTests {
      * You can access the list of inputs via the [LedgerTransaction] object which is passed into
      * [IOUContract.verify].
      */
-//    @Test
-//    fun issueTransactionMustHaveNoInputs() {
-//        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        ledgerServices.ledger {
-//            transaction {
-//                input(IOUContract.IOU_CONTRACT_ID, DummyState())
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "No inputs should be consumed when issuing an IOU."
-//            }
-//            transaction {
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                this.verifies() // As there are no input states.
-//            }
-//        }
-//    }
+    @Test
+    fun issueTransactionMustHaveNoInputs() {
+        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        ledgerServices.ledger {
+            transaction {
+                input(IOUContract.IOU_CONTRACT_ID, DummyState())
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "No inputs should be consumed when issuing an IOU."
+            }
+            transaction {
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                this.verifies() // As there are no input states.
+            }
+        }
+    }
 
     /**
      * Task 3.
@@ -107,23 +108,23 @@ class IOUIssueTests {
      * Hint: Write an additional constraint within the existing [requireThat] block which you created in the previous
      * task.
      */
-//    @Test
-//    fun issueTransactionMustHaveOneOutput() {
-//        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        ledgerServices.ledger {
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou) // Two outputs fails.
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Only one output state should be created when issuing an IOU."
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou) // One output passes.
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun issueTransactionMustHaveOneOutput() {
+        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        ledgerServices.ledger {
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou) // Two outputs fails.
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Only one output state should be created when issuing an IOU."
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou) // One output passes.
+                this.verifies()
+            }
+        }
+    }
 
     /**
      * Task 4.
