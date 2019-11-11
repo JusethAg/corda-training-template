@@ -1,26 +1,22 @@
 package net.corda.training.flow
 
-import net.corda.core.contracts.*
+import net.corda.core.contracts.Amount
+import net.corda.core.contracts.StateAndRef
 import net.corda.core.identity.CordaX500Name
-import net.corda.core.transactions.SignedTransaction
-import net.corda.finance.*
-import net.corda.finance.contracts.asset.Cash
-import net.corda.testing.node.MockNetwork
-import net.corda.training.contract.IOUContract
-import net.corda.training.state.IOUState
 import net.corda.core.identity.Party
 import net.corda.core.internal.packageName
+import net.corda.core.transactions.SignedTransaction
 import net.corda.core.utilities.getOrThrow
-import net.corda.finance.contracts.utils.sumCash
+import net.corda.finance.contracts.asset.Cash
 import net.corda.finance.schemas.CashSchemaV1
-import net.corda.testing.internal.chooseIdentityAndCert
+import net.corda.testing.node.MockNetwork
 import net.corda.testing.node.MockNetworkNotarySpec
 import net.corda.testing.node.MockNodeParameters
 import net.corda.testing.node.StartedMockNode
-import org.junit.*
+import net.corda.training.state.IOUState
+import org.junit.After
+import org.junit.Before
 import java.util.*
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 /**
  * Practical exercise instructions Flows part 3.

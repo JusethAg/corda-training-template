@@ -1,23 +1,8 @@
 package net.corda.training.contract;
 
-import net.corda.core.contracts.*;
-
-import static net.corda.core.contracts.ContractsDSL.requireSingleCommand;
-import static net.corda.core.contracts.ContractsDSL.requireThat;
-
-import net.corda.core.identity.AbstractParty;
-import net.corda.core.identity.Party;
+import net.corda.core.contracts.CommandData;
+import net.corda.core.contracts.Contract;
 import net.corda.core.transactions.LedgerTransaction;
-
-import net.corda.finance.contracts.asset.Cash;
-import net.corda.training.state.IOUState;
-
-import javax.swing.plaf.nimbus.State;
-import javax.validation.constraints.NotNull;
-import java.lang.reflect.Array;
-import java.security.PublicKey;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * This is where you'll add the contract code which defines how the [IOUState] behaves. Looks at the unit tests in

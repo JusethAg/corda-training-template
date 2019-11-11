@@ -1,25 +1,16 @@
 package net.corda.training.contract;
 
-import net.corda.core.contracts.*;
 import net.corda.core.contracts.Amount;
 import net.corda.core.contracts.CommandData;
 import net.corda.core.contracts.PartyAndReference;
 import net.corda.core.contracts.TypeOnlyCommandData;
 import net.corda.core.identity.AbstractParty;
 import net.corda.core.utilities.OpaqueBytes;
-import net.corda.finance.Currencies;
 import net.corda.finance.contracts.asset.Cash;
 import net.corda.testing.node.MockServices;
-import net.corda.training.state.IOUState;
-import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Currency;
-
-import static net.corda.testing.node.NodeTestUtils.ledger;
-import static net.corda.training.TestUtils.BOB;
-import static net.corda.training.TestUtils.ALICE;
-import static net.corda.training.TestUtils.CHARLIE;
 
 /**
  * Practical exercise instructions for Contracts Part 3.

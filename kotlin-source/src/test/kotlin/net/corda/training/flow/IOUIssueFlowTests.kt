@@ -1,19 +1,17 @@
 package net.corda.training.flow
 
 import net.corda.core.contracts.Command
-import net.corda.core.contracts.TransactionVerificationException
 import net.corda.core.flows.FlowLogic
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.transactions.SignedTransaction
-import net.corda.core.utilities.getOrThrow
-import net.corda.finance.*
-import net.corda.testing.internal.chooseIdentityAndCert
-import net.corda.testing.node.*
+import net.corda.testing.node.MockNetwork
+import net.corda.testing.node.MockNetworkNotarySpec
+import net.corda.testing.node.MockNodeParameters
+import net.corda.testing.node.StartedMockNode
 import net.corda.training.contract.IOUContract
 import net.corda.training.state.IOUState
-import org.junit.*
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
+import org.junit.After
+import org.junit.Before
 
 /**
  * Practical exercise instructions Flows part 1.

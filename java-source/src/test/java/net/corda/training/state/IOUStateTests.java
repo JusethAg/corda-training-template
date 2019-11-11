@@ -1,16 +1,13 @@
 package net.corda.training.state;
 
-import net.corda.core.contracts.*;
+import net.corda.core.contracts.Amount;
+import net.corda.core.contracts.ContractState;
+import net.corda.core.contracts.LinearState;
+import net.corda.core.contracts.UniqueIdentifier;
 import net.corda.core.identity.Party;
-import net.corda.finance.*;
+import net.corda.finance.Currencies;
 
-import static net.corda.training.TestUtils.*;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Constructor;
-import org.junit.Test;
-import java.util.*;
-import static org.junit.Assert.*;
+import java.util.Currency;
 
 /**
  * Practical exercise instructions.

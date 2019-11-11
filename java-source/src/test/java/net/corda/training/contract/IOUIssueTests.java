@@ -1,17 +1,14 @@
 package net.corda.training.contract;
 
-import net.corda.core.contracts.*;
-import net.corda.finance.Currencies;
-import net.corda.testing.node.MockServices;
+import net.corda.core.contracts.CommandData;
+import net.corda.core.contracts.ContractState;
+import net.corda.core.contracts.TypeOnlyCommandData;
 import net.corda.core.transactions.LedgerTransaction;
+import net.corda.testing.node.MockServices;
 import net.corda.training.state.IOUState;
 import net.corda.training.state.IOUStateTests;
 
 import java.util.Arrays;
-import org.junit.*;
-
-import static net.corda.testing.node.NodeTestUtils.*;
-import static net.corda.training.TestUtils.*;
 
 /**
  * Practical exercise instructions for Contracts Part 1.

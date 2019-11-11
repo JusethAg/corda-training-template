@@ -2,15 +2,14 @@ package net.corda.training.flow;
 
 import co.paralleluniverse.fibers.Suspendable;
 import net.corda.core.contracts.Amount;
-import net.corda.core.flows.*;
+import net.corda.core.flows.FlowException;
+import net.corda.core.flows.FlowLogic;
 import net.corda.core.identity.Party;
 import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.utilities.OpaqueBytes;
 import net.corda.finance.contracts.asset.Cash;
 import net.corda.finance.flows.CashIssueFlow;
-import org.intellij.lang.annotations.Flow;
 
-import javax.annotation.Signed;
 import java.util.Currency;
 
 public class SelfIssueCashFlow extends FlowLogic<Cash.State> {

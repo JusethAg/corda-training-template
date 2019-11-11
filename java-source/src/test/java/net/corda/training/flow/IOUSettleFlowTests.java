@@ -2,40 +2,20 @@ package net.corda.training.flow;
 
 import net.corda.core.concurrent.CordaFuture;
 import net.corda.core.contracts.Amount;
-import net.corda.core.contracts.Command;
-import net.corda.core.contracts.CommandAndState;
-import net.corda.core.contracts.CommandWithParties;
-import net.corda.core.flows.FlowSession;
 import net.corda.core.identity.CordaX500Name;
-import net.corda.core.identity.Party;
-import net.corda.finance.schemas.CashSchemaV1;
-import net.corda.core.transactions.LedgerTransaction;
 import net.corda.core.transactions.SignedTransaction;
-import net.corda.finance.Currencies;
 import net.corda.finance.contracts.asset.Cash;
 import net.corda.testing.node.*;
-import net.corda.training.contract.IOUContract;
-import net.corda.training.contract.IOUIssueTests;
 import net.corda.training.state.IOUState;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import javax.annotation.Signed;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Currency;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.stream.Collectors;
-
-import static net.corda.testing.driver.Driver.driver;
-import static net.corda.testing.node.NodeTestUtils.ledger;
-import static net.corda.training.TestUtils.ALICE;
-import static net.corda.training.TestUtils.BOB;
 
 /**
  * Practical exercise instructions Flows part 3.

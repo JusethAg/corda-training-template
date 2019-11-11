@@ -1,19 +1,20 @@
 package net.corda.training;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import net.corda.core.concurrent.CordaFuture;
 import net.corda.core.identity.CordaX500Name;
 import net.corda.testing.driver.DriverParameters;
-import net.corda.testing.driver.NodeParameters;
-import net.corda.testing.node.NotarySpec;
 import net.corda.testing.driver.NodeHandle;
+import net.corda.testing.driver.NodeParameters;
+import net.corda.testing.driver.VerifierType;
+import net.corda.testing.node.NotarySpec;
 import net.corda.testing.node.TestCordapp;
 import net.corda.testing.node.User;
-import net.corda.testing.driver.VerifierType;
-import static net.corda.testing.driver.Driver.driver;
-import net.corda.core.concurrent.CordaFuture;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList;
-import java.util.*;
+import java.util.Arrays;
+
+import static net.corda.testing.driver.Driver.driver;
 
 /**
  * This file is exclusively for being able to run your nodes through an IDE (as opposed to running deployNodes)

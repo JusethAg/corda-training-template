@@ -20,7 +20,7 @@ import net.corda.training.state.IOUState
 import org.bouncycastle.asn1.x500.X500Name
 import org.bouncycastle.asn1.x500.style.BCStyle
 import org.slf4j.Logger
-import java.util.Currency
+import java.util.*
 import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.Produces

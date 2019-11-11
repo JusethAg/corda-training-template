@@ -1,23 +1,11 @@
 package net.corda.training.contract
 
-import net.corda.core.contracts.Command
-import net.corda.core.contracts.CommandData
-import net.corda.core.contracts.ContractState
-import net.corda.core.contracts.TypeOnlyCommandData
-import net.corda.core.contracts.requireSingleCommand
+import net.corda.core.contracts.*
 import net.corda.core.identity.AbstractParty
 import net.corda.core.internal.packageName
-import net.corda.finance.DOLLARS
-import net.corda.finance.POUNDS
 import net.corda.finance.schemas.CashSchemaV1
 import net.corda.testing.node.MockServices
-import net.corda.testing.node.ledger
-import net.corda.training.ALICE
-import net.corda.training.BOB
-import net.corda.training.CHARLIE
-import net.corda.training.MINICORP
 import net.corda.training.state.IOUState
-import org.junit.Test
 
 /**
  * Practical exercise instructions for Contracts Part 2.

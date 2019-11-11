@@ -7,19 +7,12 @@ import net.corda.core.contracts.withoutIssuer
 import net.corda.core.identity.AbstractParty
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.internal.packageName
-import net.corda.finance.DOLLARS
-import net.corda.finance.POUNDS
 import net.corda.finance.`issued by`
 import net.corda.finance.contracts.asset.Cash
 import net.corda.finance.schemas.CashSchemaV1
 import net.corda.testing.core.TestIdentity
 import net.corda.testing.node.MockServices
-import net.corda.testing.node.ledger
-import net.corda.training.ALICE
-import net.corda.training.BOB
-import net.corda.training.CHARLIE
 import net.corda.training.state.IOUState
-import org.junit.Test
 import java.util.*
 
 /**

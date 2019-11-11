@@ -1,14 +1,10 @@
 package net.corda.training.flow;
 
 import co.paralleluniverse.fibers.Suspendable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import net.corda.core.contracts.*;
+import net.corda.core.contracts.Amount;
+import net.corda.core.contracts.ContractState;
 import net.corda.core.flows.*;
-import net.corda.core.identity.AbstractParty;
 import net.corda.core.identity.Party;
-import net.corda.core.node.services.Vault;
-import net.corda.core.node.services.vault.QueryCriteria;
 import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
 import net.corda.core.utilities.OpaqueBytes;
@@ -16,21 +12,13 @@ import net.corda.core.utilities.ProgressTracker;
 import net.corda.finance.contracts.asset.Cash;
 import net.corda.finance.flows.AbstractCashFlow;
 import net.corda.finance.flows.CashIssueFlow;
-import net.corda.training.contract.IOUContract;
 import net.corda.training.state.IOUState;
 
-import java.lang.IllegalArgumentException;
-import java.security.PublicKey;
-import java.util.*;
-
-import static net.corda.core.contracts.ContractsDSL.requireThat;
-import static net.corda.finance.workflows.GetBalances.getCashBalance;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Currency;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+
+import static net.corda.core.contracts.ContractsDSL.requireThat;
 
 public class IOUSettleFlow {
 

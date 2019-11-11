@@ -1,33 +1,24 @@
 package net.corda.training.flow;
 
 import net.corda.core.contracts.Command;
-import net.corda.core.contracts.TransactionVerificationException;
-import net.corda.core.flows.FlowLogic;
+import net.corda.core.flows.CollectSignaturesFlow;
+import net.corda.core.flows.FinalityFlow;
+import net.corda.core.flows.FlowSession;
+import net.corda.core.flows.SignTransactionFlow;
 import net.corda.core.identity.CordaX500Name;
-import net.corda.core.transactions.SignedTransaction;
-import net.corda.finance.*;
-import net.corda.core.node.NodeInfo;
-import net.corda.testing.node.*;
 import net.corda.core.identity.Party;
-import net.corda.core.crypto.SecureHash;
-import net.corda.core.flows.*;
+import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
-
-
+import net.corda.testing.node.*;
 import net.corda.training.contract.IOUContract;
 import net.corda.training.state.IOUState;
-
-import java.util.stream.Collectors;
-import java.util.concurrent.Future;
-import java.util.*;
-
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.core.IsInstanceOf.*;
-
-import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**

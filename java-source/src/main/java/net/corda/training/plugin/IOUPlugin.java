@@ -1,15 +1,15 @@
 package net.corda.training.plugin;
 
-import net.corda.core.messaging.CordaRPCOps;
-import net.corda.webserver.services.WebServerPluginRegistry;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import java.util.function.Function;
-import java.util.*;
-
+import net.corda.core.messaging.CordaRPCOps;
 import net.corda.training.api.IOUApi;
+import net.corda.webserver.services.WebServerPluginRegistry;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class IOUPlugin implements WebServerPluginRegistry {
     /**

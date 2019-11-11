@@ -1,29 +1,17 @@
 package net.corda.training.flow;
 
 import co.paralleluniverse.fibers.Suspendable;
-import net.corda.core.contracts.Command;
 import net.corda.core.contracts.ContractState;
-import net.corda.core.contracts.StateAndRef;
 import net.corda.core.flows.*;
-import net.corda.core.utilities.ProgressTracker;
-import net.corda.core.contracts.UniqueIdentifier;
-import net.corda.core.identity.AbstractParty;
 import net.corda.core.identity.Party;
-import net.corda.core.node.services.Vault;
-import net.corda.core.node.services.vault.QueryCriteria;
 import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
-import net.corda.training.contract.IOUContract;
+import net.corda.core.utilities.ProgressTracker;
 import net.corda.training.state.IOUState;
 
-import javax.annotation.Signed;
 import javax.validation.constraints.NotNull;
-import java.security.PublicKey;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static net.corda.core.contracts.ContractsDSL.requireThat;
 

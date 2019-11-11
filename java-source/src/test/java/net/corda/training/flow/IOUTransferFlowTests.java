@@ -1,29 +1,18 @@
 package net.corda.training.flow;
 
 import net.corda.core.concurrent.CordaFuture;
-import net.corda.core.contracts.Amount;
-import net.corda.core.contracts.Command;
-import net.corda.core.contracts.StateRef;
 import net.corda.core.identity.CordaX500Name;
-import net.corda.core.identity.Party;
 import net.corda.core.transactions.SignedTransaction;
-import net.corda.finance.Currencies;
-import net.corda.finance.contracts.asset.Cash;
-import net.corda.node.Corda;
 import net.corda.testing.node.*;
-import net.corda.training.contract.IOUContract;
 import net.corda.training.state.IOUState;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
-import javax.annotation.Signed;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Currency;
-import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 public class IOUTransferFlowTests {
 

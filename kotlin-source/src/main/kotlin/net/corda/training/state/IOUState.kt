@@ -1,6 +1,9 @@
 package net.corda.training.state
 
-import net.corda.core.contracts.*
+import net.corda.core.contracts.Amount
+import net.corda.core.contracts.BelongsToContract
+import net.corda.core.contracts.LinearState
+import net.corda.core.contracts.UniqueIdentifier
 import net.corda.core.identity.Party
 import net.corda.training.contract.IOUContract
 import java.util.*

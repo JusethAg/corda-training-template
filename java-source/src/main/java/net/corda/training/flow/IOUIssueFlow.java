@@ -1,27 +1,18 @@
 package net.corda.training.flow;
 
 import co.paralleluniverse.fibers.Suspendable;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.corda.core.contracts.Command;
 import net.corda.core.contracts.ContractState;
 import net.corda.core.flows.*;
-import net.corda.core.identity.AbstractParty;
 import net.corda.core.identity.Party;
 import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
-import static net.corda.core.contracts.ContractsDSL.requireThat;
 import net.corda.core.utilities.ProgressTracker;
-
-import net.corda.training.contract.IOUContract;
 import net.corda.training.state.IOUState;
-import org.intellij.lang.annotations.Flow;
 
-import javax.annotation.Signed;
+import java.util.Arrays;
+import java.util.List;
 
-import static net.corda.training.contract.IOUContract.Commands.*;
+import static net.corda.core.contracts.ContractsDSL.requireThat;
 
 /**
  * This is the flow which handles issuance of new IOUs on the ledger.

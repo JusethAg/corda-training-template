@@ -1,27 +1,10 @@
 package net.corda.training.contract;
 
-import com.google.common.collect.ImmutableList;
-import net.corda.core.contracts.*;
-import net.corda.core.contracts.Amount;
 import net.corda.core.contracts.CommandData;
-import net.corda.core.contracts.PartyAndReference;
 import net.corda.core.contracts.TypeOnlyCommandData;
-import net.corda.core.identity.AbstractParty;
-import net.corda.core.serialization.CordaSerializable;
-import net.corda.core.utilities.OpaqueBytes;
-import net.corda.finance.Currencies;
-import net.corda.finance.contracts.asset.Cash;
 import net.corda.testing.node.MockServices;
-import net.corda.training.state.IOUState;
-import org.junit.Test;
 
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
-import java.util.Currency;
-import java.util.List;
-
-import static net.corda.testing.node.NodeTestUtils.ledger;
-import static net.corda.training.TestUtils.*;
 
 /**
  * Practical exercise instructions for Contracts Part 2.

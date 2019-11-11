@@ -1,16 +1,13 @@
 package net.corda.training.contract
 
 import net.corda.core.contracts.*
-import net.corda.finance.*
-import net.corda.testing.contracts.DummyState
+import net.corda.finance.POUNDS
 import net.corda.testing.node.MockServices
 import net.corda.testing.node.ledger
 import net.corda.training.ALICE
 import net.corda.training.BOB
-import net.corda.training.DUMMY
-import net.corda.training.MINICORP
 import net.corda.training.state.IOUState
-import org.junit.*
+import org.junit.Test
 
 /**
  * Practical exercise instructions for Contracts Part 1.
@@ -50,22 +47,22 @@ class IOUIssueTests {
      * - We can check for the existence of any command that implements [IOUContract.Commands] by using the
      *   [requireSingleCommand] function which takes a type parameter.
      */
-//    @Test
-//    fun mustIncludeIssueCommand() {
-//        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        ledgerServices.ledger {
-//            transaction {
-//                output(IOUContract.IOU_CONTRACT_ID,  iou)
-//                command(listOf(ALICE.publicKey, BOB.publicKey), DummyCommand()) // Wrong type.
-//                this.fails()
-//            }
-//            transaction {
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue()) // Correct type.
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun mustIncludeIssueCommand() {
+        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        ledgerServices.ledger {
+            transaction {
+                output(IOUContract.IOU_CONTRACT_ID,  iou)
+                command(listOf(ALICE.publicKey, BOB.publicKey), DummyCommand()) // Wrong type.
+                this.fails()
+            }
+            transaction {
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue()) // Correct type.
+                this.verifies()
+            }
+        }
+    }
 
     /**
      * Task 2.
