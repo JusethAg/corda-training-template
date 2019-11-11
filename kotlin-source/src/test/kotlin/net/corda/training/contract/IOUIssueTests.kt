@@ -9,6 +9,8 @@ import net.corda.testing.node.MockServices
 import net.corda.testing.node.ledger
 import net.corda.training.ALICE
 import net.corda.training.BOB
+import net.corda.training.DUMMY
+import net.corda.training.MINICORP
 import net.corda.training.state.IOUState
 import org.junit.Test
 
@@ -218,45 +220,45 @@ class IOUIssueTests {
      * [Collection] can be turned into a set using toSet()
      * - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html
      */
-//    @Test
-//    fun lenderAndBorrowerMustSignIssueTransaction() {
-//        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
-//        ledgerServices.ledger {
-//            transaction {
-//                command(DUMMY.publicKey, IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
-//            }
-//            transaction {
-//                command(ALICE.publicKey, IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
-//            }
-//            transaction {
-//                command(BOB.publicKey, IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
-//            }
-//            transaction {
-//                command(listOf(BOB.publicKey, BOB.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
-//            }
-//            transaction {
-//                command(listOf(BOB.publicKey, BOB.publicKey, MINICORP.publicKey, ALICE.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
-//            }
-//            transaction {
-//                command(listOf(BOB.publicKey, BOB.publicKey, BOB.publicKey, ALICE.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this.verifies()
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey),IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, iou)
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun lenderAndBorrowerMustSignIssueTransaction() {
+        val iou = IOUState(1.POUNDS, ALICE.party, BOB.party)
+        ledgerServices.ledger {
+            transaction {
+                command(DUMMY.publicKey, IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
+            }
+            transaction {
+                command(ALICE.publicKey, IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
+            }
+            transaction {
+                command(BOB.publicKey, IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
+            }
+            transaction {
+                command(listOf(BOB.publicKey, BOB.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
+            }
+            transaction {
+                command(listOf(BOB.publicKey, BOB.publicKey, MINICORP.publicKey, ALICE.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this `fails with` "Both lender and borrower together only may sign IOU issue transaction."
+            }
+            transaction {
+                command(listOf(BOB.publicKey, BOB.publicKey, BOB.publicKey, ALICE.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this.verifies()
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey),IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, iou)
+                this.verifies()
+            }
+        }
+    }
 }
